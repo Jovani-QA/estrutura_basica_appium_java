@@ -1,0 +1,43 @@
+# Diretórios de build
+/build/
+/target/
+
+# Diretórios do IntelliJ IDEA
+.idea/
+*.iml
+
+# Arquivos do Eclipse
+.classpath
+.project
+.settings/
+
+# Arquivos de log e temporários
+*.log
+*.tmp
+*.swp
+
+# Arquivos de sistema
+.DS_Store
+Thumbs.db
+
+# Arquivos de backup
+*.bak
+*.orig
+
+# Node (caso use Appium CLI, Appium Doctor, etc.)
+node_modules/
+
+# APKs (caso esteja em pasta local)
+*.apk
+
+# Arquivo do Appium Inspector com dados sensíveis (caso salve)
+inspector-config.json
+
+# Credenciais ou arquivos sensíveis
+.env
+*.keystore
+
+# Relatórios de teste (opcional)
+allure-results/
+allure-report/
+test-output/
