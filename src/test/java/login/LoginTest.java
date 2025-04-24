@@ -1,33 +1,57 @@
 package login;
 
 
+import io.appium.java_client.AppiumBy;
 import io.appium.java_client.android.AndroidDriver;
 import org.example.DriverManager;
 import org.junit.jupiter.api.*;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class LoginTest {
 
     private AndroidDriver driver;
     private LoginPage loginPage;
+   //private String appPackage = "com.sercasting.castingapp";
+    private String appPackage = "com.canablis.paciente";
+
 
     @BeforeAll
     void setUp() throws Exception {
         driver = DriverManager.getDriver();
         loginPage = new LoginPage(driver);
     }
+    @BeforeEach
+    void resetApp() {
+        driver.terminateApp(appPackage);
+        driver.activateApp(appPackage);
+        try {
+            // Espera 3 segundos para o app inicializar corretamente
+            Thread.sleep(5000);
 
+            // Alternativa: espera explícita para algum elemento da página de login ficar visível
+             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+            wait.until(ExpectedConditions.presenceOfElementLocated(
+                    AppiumBy.androidUIAutomator("new UiSelector().className(\"android.widget.EditText\").instance(0)")
+            ));
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
     @AfterAll
-//    void tearDown() {
-//        if (driver != null) {
-//            driver.quit();
-//        }
-//    }
+    void tearDown() {
+        if (driver != null) {
+            //driver.quit();
+        }
+    }
 
     @Test
     @DisplayName("Login com credenciais válidas")
     void testLoginValido() {
-        loginPage.login("db118@cstng.com", "cst0962");
+        loginPage.loginBlis("db118@cstng.com", "cst0962");
         // aqui você pode validar a tela após login, por exemplo
         // Assertions.assertTrue(loginPage.isLoggedIn());
     }
