@@ -14,10 +14,10 @@ public class DriverManager {
             DesiredCapabilities capabilities = new DesiredCapabilities();
             capabilities.setCapability("platformName", "Android");
             capabilities.setCapability("deviceName", "emulator-5554");
-//            capabilities.setCapability("appPackage", "com.sercasting.castingapp");
-//            capabilities.setCapability("appActivity", "com.sercasting.castingapp.MainActivity");
-            capabilities.setCapability("appPackage", "com.canablis.paciente");
-            capabilities.setCapability("appActivity", "com.canablis.paciente.MainActivity");
+            capabilities.setCapability("appPackage", "com.sercasting.castingapp");
+            capabilities.setCapability("appActivity", "com.sercasting.castingapp.MainActivity");
+//            capabilities.setCapability("appPackage", "com.canablis.paciente");
+//            capabilities.setCapability("appActivity", "com.canablis.paciente.MainActivity");
             capabilities.setCapability("automationName", "UiAutomator2");
 
             driver = new AndroidDriver(new URL("http://192.168.101.10:4723"), capabilities);

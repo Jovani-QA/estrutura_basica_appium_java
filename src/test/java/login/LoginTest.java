@@ -15,8 +15,8 @@ public class LoginTest {
 
     private AndroidDriver driver;
     private LoginPage loginPage;
-   //private String appPackage = "com.sercasting.castingapp";
-    private String appPackage = "com.canablis.paciente";
+   private String appPackage = "com.sercasting.castingapp";
+
 
 
     @BeforeAll
@@ -33,10 +33,10 @@ public class LoginTest {
             Thread.sleep(5000);
 
             // Alternativa: espera explícita para algum elemento da página de login ficar visível
-             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-            wait.until(ExpectedConditions.presenceOfElementLocated(
-                    AppiumBy.androidUIAutomator("new UiSelector().className(\"android.widget.EditText\").instance(0)")
-            ));
+//             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+//            wait.until(ExpectedConditions.presenceOfElementLocated(
+////                    AppiumBy.androidUIAutomator("new UiSelector().className(\"android.widget.EditText\").instance(0)")
+//            ));
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -51,7 +51,7 @@ public class LoginTest {
     @Test
     @DisplayName("Login com credenciais válidas")
     void testLoginValido() {
-        loginPage.loginBlis("db118@cstng.com", "cst0962");
+        loginPage.login("db118@cstng.com", "cst0962");
         // aqui você pode validar a tela após login, por exemplo
         // Assertions.assertTrue(loginPage.isLoggedIn());
     }
